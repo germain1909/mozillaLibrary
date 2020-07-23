@@ -36,6 +36,12 @@ class Book(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a detail record for this book."""
         return reverse('book-detail', args=[str(self.id)])
+
+    def display_genre(self):
+        """Create a string for the Genre. This is required to display genre in Admin."""
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+    
+    display_genre.short_description = 'Germain' #this is the title displayed over the display_genre field
         
 
 #The other parameters of interest in the author field are null=True, which allows the database to store a 
