@@ -12,3 +12,12 @@
     <li><strong>Authors:</strong> {{ num_authors }}</li>
   </ul>
 {% endblock %}
+
+
+<!-- The important thing to note here is that variables are named with the keys that we pass into the context dictionary 
+    in the render() function of our view (see sample below). Variables will be replaced with their associated values when 
+    the template is rendered.  -->
+
+<!--You can easily recognise template variables and template tags (functions) -
+     variables are enclosed in double braces ({{ num_books }}), and tags are enclosed in single 
+     braces with percentage signs ''.  -->

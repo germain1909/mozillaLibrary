@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Book List</h1>
+  {% if book_list %}
+  <ul>
+    {% for book in book_list %}
+      <li>
+        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}       
+{% endblock %}
+
+<!--As discussed above, this is the default template file expected by 
+    the generic class-based list view (for a model named Book in an 
+    application named catalog).-->
+
+    <!-- The view passes the context (list of books) by default as 
+        object_list and book_list aliases; either will work.-->
+
+ <!--The code inside the loop creates a list item for each book that 
+    shows both the title (as a link to the yet-to-be-created 
+    detail view) and the author. -->
