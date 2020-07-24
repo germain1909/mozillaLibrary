@@ -27,3 +27,7 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+#Django does not serve static files like CSS, JavaScript, and images by default, but it can be useful for the 
+# development web server to do so while you're creating your site. As a final addition to this URL mapper, you can 
+# enable the serving of static files during development by appending the following lines. 
+# but still need to enable file serving in production
