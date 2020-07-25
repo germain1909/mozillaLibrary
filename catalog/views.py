@@ -35,6 +35,7 @@ def index(request):
 class BookListView(generic.ListView):
     model = Book
     template_name = 'book_list.html'  # Specify your own template name/location
+    paginate_by = 4
 
     
 #The generic view will query the database to get all records for the 
