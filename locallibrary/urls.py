@@ -19,11 +19,26 @@ from django.urls import include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')), # declare catlog pat
     path('', RedirectView.as_view(url='catalog/', permanent=True)), # 
+    #path('accounts/', include('django.contrib.auth.urls')), #authorization
+    #url(r'^accounts/login/$', auth_views.LoginView.as_view(template_name="registration/login.html"), name='login'), 
+    #url(r'^accounts/logout/$', auth_views.LogoutView.as_view(template_name="registration/logout.html"), name='logout'), 
+    path('accounts/login/', auth_views.LoginView.as_view(template_name="registration/login.html"), name='login'), 
+    path('accounts/logout/', auth_views.LogoutView.as_view(template_name="registration/logout.html"), name='logout'), 
+    path('accounts/passwordreset/', auth_views.PasswordResetView.as_view(template_name="registration/password_reset_form.html"), name='password_reset'), 
+    path('accounts/passwordresetdone/', auth_views.PasswordResetDoneView.as_view(template_name="registration/password_reset_done.html"), name='password_reset_done'), 
+    path('accounts/passwordresetconfirm/', auth_views.PasswordResetConfirmView.as_view(template_name="registration/password_reset_confirm_form.html"), name='password_reset_confirm'), 
+    path('accounts/passwordresetcomplete/', auth_views.PasswordResetCompleteView.as_view(template_name="registration/password_reset_complete.html"), name='password_reset_complete'), 
+    # known bug you have to explicitly override logout
+    # could create an explicit view for this
+    #paths are case sensitive
+    #cannot have any duplicate urls or duplicate name fields
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
