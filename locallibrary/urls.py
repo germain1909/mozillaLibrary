@@ -41,6 +41,12 @@ urlpatterns = [
     #cannot have any duplicate urls or duplicate name fields
 ]
 
+if settings.DEBUG:
+   import debug_toolbar
+   urlpatterns += [
+       url(r'^__debug__/', include(debug_toolbar.urls)),
+   ]
+
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 #Django does not serve static files like CSS, JavaScript, and images by default, but it can be useful for the 
 # development web server to do so while you're creating your site. As a final addition to this URL mapper, you can 
