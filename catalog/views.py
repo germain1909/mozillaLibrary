@@ -64,7 +64,7 @@ class BookDetailView(generic.DetailView):
     
 #aboce looks for template book_detail because takes the model name and adds _detail
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view listing books on loan to current user."""
@@ -76,3 +76,5 @@ class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
         return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='o').order_by('due_back')
 
         #LoginRequiredMixin means only logged in users can call this view
+
+
