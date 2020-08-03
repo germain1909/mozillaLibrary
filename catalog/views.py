@@ -5,6 +5,10 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from catalog.forms import RenewBookForm
+import datetime
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from catalog.models import Author
 
 # Create your views here.
 
@@ -122,4 +126,28 @@ def renew_book_librarian(request, pk):
         'book_instance': book_instance,
     }
 
-    return render(request, 'catalog/book_renew_librarian.html', context)
+    return render(request, 'book_renew_librarian.html', context)
+
+class AuthorCreate(CreateView):
+    model = Author
+    template_name = 'author_form.html'
+    fields = '__all__'
+    initial = {'date_of_death': '05/01/2018'}
+
+class AuthorUpdate(UpdateView):
+    model = Author
+    template_name = 'author_form.html'
+    fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
+    context = {
+        
+    }
+
+class AuthorDelete(DeleteView):
+    model = Author
+    template_name = 'author_confirm_delete.html'
+    success_url = reverse_lazy('authors')
+
+class AuthorDetailView(generic.DetailView):
+    """Generic class-based detail view for an author."""
+    model = Author
+    template_name = 'author_detail.html'
