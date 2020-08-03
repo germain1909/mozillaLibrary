@@ -81,6 +81,19 @@ class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
 
         #LoginRequiredMixin means only logged in users can call this view
 
+#class LoanedBooksAllListView(PermissionRequiredMixin, generic.ListView):
+#come back and add permissions
+class LoanedBooksAllListView(generic.ListView):
+    """Generic class-based view listing all books on loan. Only visible to users with can_mark_returned permission."""
+    model = BookInstance
+    #permission_required = 'catalog.can_mark_returned'
+    #come back and finish permissions
+    template_name = 'bookinstance_list_borrowed_all.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return BookInstance.objects.filter(status__exact='o').order_by('due_back')
+
 def renew_book_librarian(request, pk):
     book_instance = get_object_or_404(BookInstance, pk=pk)
 
