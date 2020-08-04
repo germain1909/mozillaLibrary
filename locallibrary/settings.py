@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'locallibrary.wsgi.application'
 if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.',
             'NAME': os.environ['RDS_DB_NAME'],
             'USER': os.environ['RDS_USERNAME'],
             'PASSWORD': os.environ['RDS_PASSWORD'],
@@ -87,16 +87,16 @@ if 'RDS_DB_NAME' in os.environ:
         }
     }
 else:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'local',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql', 
+            'NAME': 'local',
+            'USER': 'root',
+            'PASSWORD': 'root',
+            'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+            'PORT': '3306',
+        }
     }
-}
 
 
 # Password validation
@@ -143,7 +143,7 @@ LOGIN_REDIRECT_URL = '/'
 
 
 # DEBUG TOOLBAR
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
    INTERNAL_IPS = ('127.0.0.1', 'localhost',)
@@ -174,5 +174,5 @@ if DEBUG:
        'INTERCEPT_REDIRECTS': False,
    }
 else:
-     ALLOWED_HOSTS =  ['localhost', '127.0.0.1']
+     ALLOWED_HOSTS =  ['*']
    #END DEBUUG TOOLBAR
