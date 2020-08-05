@@ -19,10 +19,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-try:
-    import pymysql
-    pymysql.install_as_MySQLdb()
-except ImportError:
-    pass
