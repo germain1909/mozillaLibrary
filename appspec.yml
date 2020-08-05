@@ -1,3 +1,0 @@
-virtualenv -p python3 Bluewallet-env
-source Bluewallet-env/bin/activate
-pip install django
