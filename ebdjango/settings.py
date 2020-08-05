@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import logging
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -86,6 +87,7 @@ if 'RDS_DB_NAME' in os.environ:
             'PORT': os.environ['RDS_PORT'],
         }
     }
+    logging.warning("Using RDS DB")
 else:
     DATABASES = {
         'default': {
@@ -174,5 +176,6 @@ if DEBUG:
        'INTERCEPT_REDIRECTS': False,
    }
 else:
-     ALLOWED_HOSTS =  ['*']
+     ALLOWED_HOSTS =  ['*','bluewallet-env.eba-kbnpdku5.us-east-2.elasticbeanstalk.com']
+     logging.warning("Using host")
    #END DEBUUG TOOLBAR
