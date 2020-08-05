@@ -1,6 +1,6 @@
 .vscode
 catalog/migrations
-locallibrary/__pycache__
+ebdjango/__pycache__
 __pycache__/
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
