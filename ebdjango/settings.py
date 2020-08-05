@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'ebdjango.wsgi.application'
 if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'mysql.connector.django',
             'NAME': os.environ['RDS_DB_NAME'],
             'USER': os.environ['RDS_USERNAME'],
             'PASSWORD': os.environ['RDS_PASSWORD'],
@@ -91,7 +91,7 @@ if 'RDS_DB_NAME' in os.environ:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'mysql.connector.django', 
+            'ENGINE': 'django.db.backends.mysql', 
             'NAME': 'local',
             'USER': 'root',
             'PASSWORD': 'root',
