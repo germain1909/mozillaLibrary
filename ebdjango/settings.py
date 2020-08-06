@@ -88,6 +88,8 @@ if 'RDS_DB_NAME' in os.environ:
         }
     }
     logging.warning("Using RDS DB")
+    logging.warning("gbname",os.environ['RDS_DB_NAME'])
+    logging.warning("gbusername",os.environ['RDS_USERNAME'])
 else:
     DATABASES = {
         'default': {
