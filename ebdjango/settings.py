@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ebdjango.wsgi.application'
+WSGI_APPLICATION = 'ebdjango.asgi.application'
 
 
 # Database
