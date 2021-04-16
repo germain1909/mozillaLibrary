@@ -1,7 +1,7 @@
 asgiref==3.2.10
 Django==3.0.8
 mysqlclient==1.4.4
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
 pytz==2020.1
 django-mysql==3.8.1
 PyMySQL==0.10.0
